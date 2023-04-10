@@ -25,7 +25,7 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public void addProduct(ProductDTO productDTO) {
+    public void createProduct(ProductDTO productDTO) {
 
     }
 

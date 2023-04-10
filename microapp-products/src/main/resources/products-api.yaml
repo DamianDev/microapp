@@ -1,0 +1,148 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+servers:
+  - url: http://localhost:8080/
+paths:
+  /products:
+    get:
+      summary: Get all products
+      operationId: getAllProducts
+      tags:
+        - products
+      responses:
+        '200':
+          description: All products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Create a product
+      operationId: createProduct
+      requestBody:
+        description: Create a new product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      tags:
+        - products
+      responses:
+        '201':
+          description: Null response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Update a product
+      operationId: updateProduct
+      requestBody:
+        description: Update a product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      tags:
+        - products
+      responses:
+        '201':
+          description: Null response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /products/{productId}:
+    get:
+      summary: Get product by id
+      operationId: getProductById
+      tags:
+        - products
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: The id of the product to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Delete product by id
+      operationId: deleteProductById
+      tags:
+        - products
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: The id of the product to delete
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Null response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - id
+        - name
+        - price
+      properties:
+        id:
+          type: integer
+          format: int
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: int
+        quantity:
+          type: int
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

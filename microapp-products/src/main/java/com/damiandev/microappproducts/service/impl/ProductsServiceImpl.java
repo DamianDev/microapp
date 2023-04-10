@@ -1,7 +1,7 @@
 package com.damiandev.microappproducts.service.impl;
 
+import com.damiandev.microappproducts.repository.ProductsRepository;
 import com.damiandev.microappproducts.service.ProductsService;
-import io.swagger.v3.oas.annotations.servers.Server;
 import org.damiandev.model.ProductDTO;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +10,11 @@ import java.util.List;
 @Service
 public class ProductsServiceImpl implements ProductsService {
 
-    public ProductsServiceImpl() {
+    // TODO Add MapStruct
+    private final ProductsRepository productsRepository;
 
+    public ProductsServiceImpl(ProductsRepository productsRepository) {
+        this.productsRepository = productsRepository;
     }
 
     @Override

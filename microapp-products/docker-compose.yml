@@ -14,7 +14,10 @@ services:
       - mongo-volume:/data/db
     ports:
       - '27017-27019:27017-27019'
-  microapp-customer:
+  microapp-products:
     build: .
+    container_name: microapp-products
+    environment:
+      - DB_HOST=mongo
     ports:
       - "8081:8080"

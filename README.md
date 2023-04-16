@@ -6,7 +6,11 @@ Docker image was built with spring profile "docker". When running the image prov
 ### Endpoints
 
 GET /products - Get all products
+
 POST /products - Create a product
+
 PUT /products - Update product
+
 GET /products/{id} - Get product by id
+
 DELETE /products/{id} - Delete product by id

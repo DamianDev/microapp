@@ -1,6 +1,5 @@
-FROM eclipse-temurin:17
+FROM eclipse-temurin:17-alpine
 WORKDIR /opt/app
-ARG JAR_FILE=target/microapp-products-1.0.0.jar
-COPY ${JAR_FILE} microapp-products.jar
+COPY target/microapp-products-1.0.0.jar microapp-products.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-Dspring.profiles.active=docker", "-jar","microapp-products.jar"]
+ENTRYPOINT ["java", "-jar", "microapp-products.jar"]

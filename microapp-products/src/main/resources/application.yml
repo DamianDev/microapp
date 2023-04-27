@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      host: 172.21.0.2
+      port: 27017
+      database: products
+      username: testuser
+      password: testpassword

@@ -1,5 +1,6 @@
 package com.damiandev.microapporders.configuration
 
+import com.damiandev.microapporders.entity.OrderProducts
 import com.damiandev.microapporders.entity.Orders
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
@@ -32,6 +33,7 @@ class DatabaseInitializer {
     fun initDatabase() {
         transaction(Database.connect(DBContext.dataSource)) {
             SchemaUtils.create(Orders)
+            SchemaUtils.create(OrderProducts)
         }
     }
 }

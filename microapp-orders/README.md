@@ -8,7 +8,9 @@
 
 `docker run -d --name microapp-orders -e DB_HOST=<<postgres image IPAddress>> -p <<your port>>:8080 damiandev13/microapp-orders`
 
-### Endpoint
+### Endpoints
+
+#### Orders
 
 (GET) /api/orders/all
 
@@ -21,3 +23,31 @@
 (DELETE) /api/delete?ids={id},{id},...
 
 (DELETE) /api/orders/delete/{id}
+
+#### Orders info
+
+(GET) /api/ordersInfo/all
+
+(GET) /api/ordersInfo/{id}
+
+(GET) /api/ordersInfo/customer/{customerId}
+
+(POST) /api/ordersInfo/add
+
+(DELETE) /api/ordersInfo?ids={id},{id},...
+
+(DELETE) /api/ordersInfo/delete/{id}
+
+#### Order product
+
+(GET) /api/orderProduct/all
+
+(GET) /api/orderProduct/{id}
+
+(GET) /api/orderProduct/customer/{customerId}
+
+(POST) /api/orderProduct/add
+
+(DELETE) /api/orderProduct?ids={id},{id},...
+
+(DELETE) /api/orderProduct/delete/{id}

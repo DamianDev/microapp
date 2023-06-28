@@ -25,9 +25,10 @@ public class CustomerDAO {
                 .fetchOneInto(Customer.class);
     }
 
-    public void add(Customer customer) {
-        context.insertInto(Tables.CUSTOMER, Tables.CUSTOMER.NAME, Tables.CUSTOMER.SURNAME)
+    public Customer add(Customer customer) {
+        return context.insertInto(Tables.CUSTOMER, Tables.CUSTOMER.NAME, Tables.CUSTOMER.SURNAME)
                 .values(customer.getName(), customer.getSurname())
-                .execute();
+                .returning(Tables.CUSTOMER)
+                .fetchOneInto(Customer.class);
     }
 }

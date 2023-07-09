@@ -22,7 +22,23 @@ public class CustomerControllerImpl implements CustomersApiDelegate {
     }
 
     @Override
-    public ResponseEntity<CustomerDTO> createCustomer(CustomerDTO customerDTO) {
-        return ResponseEntity.ok(customerService.addCustomer(customerDTO)); // TODO Return only ID
+    public ResponseEntity<CustomerDTO> getCustomerById(Long id) {
+        return ResponseEntity.ok(customerService.getCustomerById(id));
+    }
+
+    @Override
+    public ResponseEntity<Long> createCustomer(CustomerDTO customerDTO) {
+        return ResponseEntity.ok(customerService.addCustomer(customerDTO));
+    }
+
+    @Override
+    public ResponseEntity<Long> updateCustomer(CustomerDTO customerDTO) {
+        return ResponseEntity.ok(customerService.updateCustomer(customerDTO));
+    }
+
+    @Override
+    public ResponseEntity<Void> deleteCustomerById(Long id) {
+        customerService.deleteCustomerById(id);
+        return ResponseEntity.ok().build();
     }
 }

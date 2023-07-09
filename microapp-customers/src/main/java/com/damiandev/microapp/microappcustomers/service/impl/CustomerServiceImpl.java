@@ -5,6 +5,7 @@ import com.damiandev.microapp.microappcustomers.mapper.base.CustomerMapper;
 import com.damiandev.microapp.microappcustomers.model.CustomerDTO;
 import com.damiandev.microapp.microappcustomers.service.CustomerService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public List<CustomerDTO> getCustomers() {
         return customerDAO.getAll()
                 .stream()
@@ -27,7 +29,26 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO addCustomer(CustomerDTO customerDTO) {
-        return customerMapper.entityToDto(customerDAO.add(customerMapper.dtoToEntity(customerDTO)));
+    @Transactional
+    public Long addCustomer(CustomerDTO customerDTO) {
+        return customerDAO.add(customerMapper.dtoToEntity(customerDTO));
+    }
+
+    @Override
+    @Transactional
+    public Long updateCustomer(CustomerDTO customerDTO) {
+        return customerDAO.update(customerMapper.dtoToEntity(customerDTO));
+    }
+
+    @Override
+    @Transactional
+    public CustomerDTO getCustomerById(Long id) {
+        return customerMapper.entityToDto(customerDAO.getByID(id));
+    }
+
+    @Override
+    @Transactional
+    public void deleteCustomerById(Long id) {
+        customerDAO.delete(id);
     }
 }

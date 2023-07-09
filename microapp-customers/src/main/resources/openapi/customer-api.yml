@@ -33,7 +33,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                type: integer
+                format: int64
     put:
       summary: Update customer
       operationId: updateCustomer
@@ -50,7 +51,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                type: integer
+                format: int64
   /customers/{id}:
     get:
       summary: Retrieve customer by id
